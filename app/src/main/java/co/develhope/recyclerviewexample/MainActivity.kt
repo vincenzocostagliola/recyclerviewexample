@@ -60,11 +60,13 @@ class MainActivity : AppCompatActivity() {
                 )
             }
         }
-        itemToShow.add(
+/*        itemToShow.add(
             Mice(
                 name = "Isidro Dunn", breed = "eius", age = 6274
             )
         )
+        */
+
         return itemToShow
     }
 }

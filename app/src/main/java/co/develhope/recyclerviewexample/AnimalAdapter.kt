@@ -1,5 +1,6 @@
 package co.develhope.recyclerviewexample
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -7,6 +8,10 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import co.develhope.recyclerviewexample.data.domain.AnimalItems
 import co.develhope.recyclerviewexample.data.domain.AnimalItems.Cat
 import co.develhope.recyclerviewexample.data.domain.AnimalItems.CatTitle
+import co.develhope.recyclerviewexample.data.domain.AnimalItems.Companion.CatId
+import co.develhope.recyclerviewexample.data.domain.AnimalItems.Companion.CatTileId
+import co.develhope.recyclerviewexample.data.domain.AnimalItems.Companion.DogId
+import co.develhope.recyclerviewexample.data.domain.AnimalItems.Companion.DogTitleId
 import co.develhope.recyclerviewexample.data.domain.AnimalItems.Dog
 import co.develhope.recyclerviewexample.data.domain.AnimalItems.DogTitle
 import co.develhope.recyclerviewexample.databinding.CatTitleBinding
@@ -23,10 +28,10 @@ class AnimalAdapter(val list: List<AnimalItems>, val onClick: (AnimalItems) -> U
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return when (viewType) {
-            1 -> CatViewHolder(ItemAnimalBinding.inflate(LayoutInflater.from(parent.context), parent, false))
-            2 -> DogViewHolder(ItemAnimalBinding.inflate(LayoutInflater.from(parent.context), parent, false))
-            3 -> CatTitleViewHolder(CatTitleBinding.inflate(LayoutInflater.from(parent.context), parent, false))
-            4 -> DogTitleViewHolder(DogTitleBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+            CatId -> CatViewHolder(ItemAnimalBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+            DogId -> DogViewHolder(ItemAnimalBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+            CatTileId -> CatTitleViewHolder(CatTitleBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+            DogTitleId -> DogTitleViewHolder(DogTitleBinding.inflate(LayoutInflater.from(parent.context), parent, false))
             else -> throw Exception("Invalid ViewHolder Type")
         }
     }
@@ -40,6 +45,7 @@ class AnimalAdapter(val list: List<AnimalItems>, val onClick: (AnimalItems) -> U
             is DogViewHolder -> holder.bind(item as Dog, onClick)
             is CatTitleViewHolder -> holder.bind(item as CatTitle)
             is DogTitleViewHolder -> holder.bind(item as DogTitle)
+            else -> throw Exception("Invalid ViewHolder Not Recognized")
         }
     }
 }
