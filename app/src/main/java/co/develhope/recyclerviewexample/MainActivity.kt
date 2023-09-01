@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         val itemsToShow = createItemsList(animalList)
 
         binding.rv.adapter = AnimalAdapter(list = itemsToShow) { cat ->
-            Toast.makeText(this, "Il mio gatto si chiama: ${cat.name}", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "On clik lambda", Toast.LENGTH_LONG).show()
         }
     }
 

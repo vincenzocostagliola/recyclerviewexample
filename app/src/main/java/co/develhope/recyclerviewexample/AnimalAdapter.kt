@@ -4,8 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import co.develhope.recyclerviewexample.data.domain.Animal
 import co.develhope.recyclerviewexample.data.domain.AnimalItems
+import co.develhope.recyclerviewexample.databinding.CatTitleBinding
+import co.develhope.recyclerviewexample.databinding.DogTitleBinding
 import co.develhope.recyclerviewexample.databinding.ItemAnimalBinding
 
 class AnimalAdapter(val list: List<AnimalItems>, val onClick: (AnimalItems) -> Unit) :
@@ -25,13 +26,35 @@ class AnimalAdapter(val list: List<AnimalItems>, val onClick: (AnimalItems) -> U
 
 
 class CatViewHolder(private val binding: ItemAnimalBinding) : RecyclerView.ViewHolder(binding.root) {
-
-    fun bind(item: AnimalItems, onClick: (AnimalItems) -> Unit) {
+    fun bind(item: AnimalItems.Cat, onClick: (AnimalItems) -> Unit) {
         binding.title.text = item.name
         binding.subtitle.text = item.breed
         binding.age.text = item.age.toString()
         binding.root.setOnClickListener {
-                onClick(item)
+            onClick(item)
         }
+    }
+}
+
+class DogViewHolder(private val binding: ItemAnimalBinding) : RecyclerView.ViewHolder(binding.root) {
+    fun bind(item: AnimalItems.Dog, onClick: (AnimalItems) -> Unit) {
+        binding.title.text = item.name
+        binding.subtitle.text = item.breed
+        binding.age.text = item.age.toString()
+        binding.root.setOnClickListener {
+            onClick(item)
+        }
+    }
+}
+
+class CatTitleViewHolder(private val binding: CatTitleBinding) : RecyclerView.ViewHolder(binding.root) {
+    fun bind(item: AnimalItems.CatTitle) {
+
+    }
+}
+
+class DogTitleViewHolder(private val binding: DogTitleBinding) : RecyclerView.ViewHolder(binding.root) {
+    fun bind(item: AnimalItems.CatTitle) {
+
     }
 }
