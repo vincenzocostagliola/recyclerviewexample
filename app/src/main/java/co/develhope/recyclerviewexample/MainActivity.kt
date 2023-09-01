@@ -1,8 +1,8 @@
 package co.develhope.recyclerviewexample
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import co.develhope.recyclerviewexample.data.Data
 import co.develhope.recyclerviewexample.data.domain.Animal
 import co.develhope.recyclerviewexample.data.domain.Animal.AnimalType.CAT
@@ -10,6 +10,7 @@ import co.develhope.recyclerviewexample.data.domain.Animal.AnimalType.DOG
 import co.develhope.recyclerviewexample.data.domain.AnimalItems
 import co.develhope.recyclerviewexample.data.domain.AnimalItems.CatTitle
 import co.develhope.recyclerviewexample.data.domain.AnimalItems.DogTitle
+import co.develhope.recyclerviewexample.data.domain.AnimalItems.Mice
 import co.develhope.recyclerviewexample.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -49,15 +50,21 @@ class MainActivity : AppCompatActivity() {
 
         itemToShow.add(DogTitle)
         animalList.forEach { animal ->
-            if(animal.type == DOG){
-                itemToShow.add(AnimalItems.Dog(
-                    name = animal.name,
-                    breed = animal.breed,
-                    age = animal.age
-                ))
+            if (animal.type == DOG) {
+                itemToShow.add(
+                    AnimalItems.Dog(
+                        name = animal.name,
+                        breed = animal.breed,
+                        age = animal.age
+                    )
+                )
             }
         }
-
+        itemToShow.add(
+            Mice(
+                name = "Isidro Dunn", breed = "eius", age = 6274
+            )
+        )
         return itemToShow
     }
 }

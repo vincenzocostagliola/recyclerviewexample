@@ -1,19 +1,25 @@
 package co.develhope.recyclerviewexample.data.domain
 
-sealed class AnimalItems(){
+sealed class AnimalItems(val id : Int){
 
     data class Cat(
         val name: String,
         val breed: String,
         val age : Int
-    ) : AnimalItems()
+    ) : AnimalItems(1)
     
     data class Dog(
         val name: String,
         val breed: String,
         val age : Int
-    ) : AnimalItems()
+    ) : AnimalItems(2)
 
-    object CatTitle :  AnimalItems()
-    object DogTitle : AnimalItems()
+    object CatTitle :  AnimalItems(3)
+    object DogTitle : AnimalItems(4)
+
+    data class Mice(
+        val name: String,
+        val breed: String,
+        val age : Int
+    ) : AnimalItems(5)
 }
